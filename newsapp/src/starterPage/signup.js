@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const signup = () => {
-    
+const Signup = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="signup-container">
       <div className="signup-form">
@@ -37,11 +41,17 @@ const signup = () => {
             />
           </div>
 
-          <button type="submit" className="signup-button">Sign up</button>
-          
-          <Link to="/login" className="login-button">Already have an account?</Link>
+          <button type="submit" className="signup-button">
+            Sign Up
+          </button>
+
+          <Link to="/" className="login-button">
+            Already have an account?
+          </Link>
         </form>
       </div>
     </div>
   );
 };
+
+export default Signup;
