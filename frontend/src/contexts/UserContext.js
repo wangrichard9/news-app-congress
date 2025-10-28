@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import ApiService from '../services/api';
+import ApiService from '../services/Firebase';
 
 const UserContext = createContext();
 

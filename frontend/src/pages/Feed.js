@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useUser } from '../contexts/UserContext';
-import ApiService from '../services/api';
+import ApiService from '../services/Firebase';
 import ArticleCard from '../ui/ArticleCard';
 
 function Feed() {

@@ -34,8 +34,11 @@ export async function hfZeroShotClassification({ model = HF_BIAS_MODEL, inputs, 
   try {
     const response = await axios.post(
       `${HF_BASE}/${encodeURIComponent(model)}`,
-      { inputs },
-      { 
+      {
+        inputs,
+        parameters: { candidate_labels },
+      },
+      {
         headers: { 
           Authorization: `Bearer ${HF_API_KEY}`,
           'Content-Type': 'application/json'
@@ -49,5 +52,6 @@ export async function hfZeroShotClassification({ model = HF_BIAS_MODEL, inputs, 
     throw error;
   }
 }
+
 
 

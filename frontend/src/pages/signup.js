@@ -3,7 +3,8 @@ import { useUser } from '../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 import FirebaseService from '../services/Firebase';
 
-function Login() {
+function Signup() {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -15,8 +16,13 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email.trim() || !password.trim()) {
+    if (!username.trim() || !email.trim() || !password.trim()) {
       setError('Please fill in all fields');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
       return;
     }
 
@@ -24,14 +30,17 @@ function Login() {
     setError('');
 
     try {
-      // Log in the user
-      const authUser = await FirebaseService.login(email.trim(), password);
-      if (!authUser) throw new Error('Login failed');
+      // Create a new user
+      const userData = await FirebaseService.createUser(
+        username.trim(),
+        email.trim(),
+        password
+      );
 
-      const userData = await FirebaseService.getUser(authUser.uid);
-
+      // Log in the user in context
       login(userData.username, userData.email);
 
+      // Redirect to feed or home page
       navigate('/feed');
     } catch (e) {
       setError(e.message);
@@ -46,14 +55,28 @@ function Login() {
         <div className="bg-white shadow-2xl rounded-2xl p-8 border border-gray-100">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-              Welcome to Aware
+              Create an Account
             </h2>
             <p className="text-gray-600 text-sm">
-              Enter your details to get personalized, bias-aware news
+              Join Aware and get personalized, bias-aware news
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Username
+              </label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Enter username"
+                className="appearance-none relative block w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150"
+                disabled={loading}
+              />
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Email
@@ -76,7 +99,7 @@ function Login() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
+                placeholder="Enter password (min 6 chars)"
                 className="appearance-none relative block w-full px-4 py-3 border border-gray-300 rounded-lg placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150"
                 disabled={loading}
               />
@@ -93,19 +116,18 @@ function Login() {
               disabled={loading}
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
             >
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? 'Creating account...' : 'Sign Up'}
             </button>
           </form>
 
           <p className="mt-6 text-center text-sm text-gray-600">
-            Don't have an account?{' '}
+            Already have an account?{' '}
             <span
               className="text-blue-600 hover:underline cursor-pointer"
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate('/login')}
             >
-              Click here
-            </span>{' '}
-            to create one!
+              Sign In
+            </span>
           </p>
         </div>
       </div>
@@ -113,4 +135,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
