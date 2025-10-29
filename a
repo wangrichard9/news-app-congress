@@ -1,0 +1,27 @@
+[33maf8401e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: commit: test
+[33m7abaf15[m HEAD@{1}: commit: Remove .env from tracking
+[33mab61396[m HEAD@{2}: Branch: renamed refs/heads/recovery to refs/heads/main
+[33mab61396[m HEAD@{4}: checkout: moving from main to recovery
+[33mbe01a48[m HEAD@{5}: commit (merge): Keep recovery version of .env
+[33m6fd3bfd[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{6}: checkout: moving from recovery to main
+[33mab61396[m HEAD@{7}: commit: npm install firebase
+[33mef46333[m HEAD@{8}: reset: moving to ef46333
+[33m4a41dfa[m HEAD@{9}: checkout: moving from main to recovery
+[33m6fd3bfd[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{10}: rebase (finish): returning to refs/heads/main
+[33m6fd3bfd[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{11}: rebase (pick): Commit without .env
+[33m8e1561e[m HEAD@{12}: rebase (continue): npm install firebase
+[33m7be076d[m HEAD@{13}: rebase (start): checkout 18d9ea860455c92b216c174a4bffa51cba2b5c58^
+[33mef46333[m HEAD@{14}: rebase (abort): returning to refs/heads/main
+[33m7be076d[m HEAD@{15}: rebase (start): checkout 18d9ea860455c92b216c174a4bffa51cba2b5c58^
+[33mef46333[m HEAD@{16}: rebase (abort): returning to refs/heads/main
+[33m7be076d[m HEAD@{17}: rebase (start): checkout 18d9ea860455c92b216c174a4bffa51cba2b5c58^
+[33mef46333[m HEAD@{18}: rebase (abort): returning to refs/heads/main
+[33mef46333[m HEAD@{19}: rebase (abort): returning to refs/heads/main
+[33mef46333[m HEAD@{20}: commit: Commit without .env
+[33m4a41dfa[m HEAD@{21}: reset: moving to HEAD~1
+[33m4b0844e[m HEAD@{22}: reset: moving to HEAD~1
+[33mfdc4e9a[m HEAD@{23}: commit: Ignore .env
+[33m4b0844e[m HEAD@{24}: commit: Add .env example without secrets
+[33m4a41dfa[m HEAD@{25}: commit: npm install firebase
+[33m18d9ea8[m HEAD@{26}: commit: do npm install firebase
+[33m7be076d[m HEAD@{27}: clone: from https://github.com/wangrichard9/news-app-congress.git
